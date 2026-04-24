@@ -1,0 +1,24 @@
+# macOS system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# OpenCore — NEVER commit your real config.plist with serial numbers
+# Use config_GITHUB.plist (sanitized) renamed to config.plist instead
+config.plist.bak
+*.bak
+*.backup
+*_backup*
+*_old*
+
+# Sensitive / personal
+# (make sure config.plist has placeholder serials before committing)
+
+# Build artifacts
+*.log
+*.dmg
+*.iso
