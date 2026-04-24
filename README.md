@@ -1,205 +1,192 @@
-# Lenovo ThinkPad X1 Yoga Gen 4 — Hackintosh EFI (OpenCore)
+# 🍎 Lenovo ThinkPad X1 Yoga Gen 4 — Hackintosh EFI
 
-[![macOS](https://img.shields.io/badge/macOS-Sequoia%2015.7.5-brightgreen)](https://www.apple.com/macos/sequoia/)
-[![OpenCore](https://img.shields.io/badge/OpenCore-Latest-blue)](https://github.com/acidanthera/OpenCorePkg)
-[![SMBIOS](https://img.shields.io/badge/SMBIOS-MacBookPro15%2C2-orange)](https://support.apple.com/en-us/111893)
-[![Status](https://img.shields.io/badge/Status-Working-success)](#)
+> **OpenCore bootloader EFI for Lenovo ThinkPad X1 Yoga Gen 4**  
+> macOS Ventura / Sonoma compatible
 
-> OpenCore EFI for Lenovo ThinkPad X1 Yoga 4th Generation running macOS Sequoia 15.7.5
+![OpenCore](https://img.shields.io/badge/OpenCore-1.0.x-blue?style=flat-square)
+![macOS](https://img.shields.io/badge/macOS-Ventura%20%7C%20Sonoma-brightgreen?style=flat-square)
+![Model](https://img.shields.io/badge/Model-X1%20Yoga%20Gen%204-red?style=flat-square)
+![Author](https://img.shields.io/badge/author-Dr.%20ZinMyoTun-orange?style=flat-square)
 
 ---
 
-## 💻 Hardware Specifications
+## 🇲🇲 မြန်မာဘာသာ ရှင်းလင်းချက်
 
-| Component | Details |
-|-----------|---------|
-| **Model** | Lenovo ThinkPad X1 Yoga Gen 4 |
-| **CPU** | Intel Core i7-8565U (Whiskey Lake, 4C/8T) |
-| **iGPU** | Intel UHD Graphics 620 |
-| **RAM** | 16 GB LPDDR3 |
-| **Storage** | KINGBANK NVMe SSD |
-| **Display** | 14" FHD IPS Touchscreen (1920×1080) |
-| **WiFi / BT** | Intel Wireless-AC 9560 (WiFi + Bluetooth) |
+### Hackintosh ဆိုတာ ဘာလဲ?
+
+**Hackintosh** ဆိုသည်မှာ Apple ကွန်ပျူတာမဟုတ်သော အခြား PC သို့မဟုတ် Laptop တွင် **macOS** တပ်ဆင်၍ အသုံးပြုသောနည်းလမ်းကို ခေါ်သည်။ ဤ repository တွင် **Lenovo ThinkPad X1 Yoga Gen 4** Laptop အတွက် macOS တပ်ဆင်ရာ၌ လိုအပ်သော **EFI partition** ဖိုင်များ ပါဝင်သည်။
+
+### ဤ EFI သည် ဘာအတွက်လဲ?
+
+- **OpenCore** bootloader ဖြင့် macOS ကို boot လုပ်နိုင်ရန် ပြုလုပ်ထားသည်
+- Lenovo X1 Yoga Gen 4 ၏ hardware နှင့် macOS ကြား ချိတ်ဆက်ပေးသော kext (driver) များ ပါဝင်သည်
+- ACPI patch များ၊ quirks များ မှန်ကန်စွာ သတ်မှတ်ထားသည်
+
+---
+
+### 💻 စက်ပစ္စည်းသတ်မှတ်ချက်
+
+| အစိတ်အပိုင်း | အသေးစိတ် |
+|---|---|
+| **Model** | Lenovo ThinkPad X1 Yoga Gen 4 (2019) |
+| **CPU** | Intel Core i5/i7 8th Gen (Whiskey Lake) |
+| **GPU** | Intel UHD Graphics 620 |
+| **RAM** | 8GB / 16GB LPDDR3 |
+| **Storage** | NVMe SSD |
+| **Display** | 14" FHD / WQHD IPS Touch |
+| **WiFi** | Intel Wireless-AC 9560 |
+| **Bluetooth** | Intel Bluetooth 5.0 |
 | **Audio** | Realtek ALC285 |
-| **Ethernet** | Intel I219-V |
-| **Trackpad** | I2C (VoodooI2C) |
-| **Touchscreen** | I2C HID (VoodooI2CHID) |
+| **Touchpad** | Synaptics TrackPoint + Touchpad |
 
 ---
 
-## ✅ What Works
+### ✅ အလုပ်လုပ်သောအရာများ (Working)
 
-| Feature | Status | Notes |
-|---------|--------|-------|
-| macOS Sequoia 15.7.5 | ✅ Working | Stable boot |
-| Intel UHD 620 iGPU | ✅ Working | Full acceleration |
-| Audio (Speakers) | ✅ Working | ALC285, layout-id 71 |
-| WiFi | ✅ Working | itlwm + HeliPort |
-| Ethernet | ✅ Working | Intel I219-V |
-| Trackpad | ✅ Working | I2C, multi-gesture |
-| Touchscreen | ✅ Working | Full touch + stylus |
-| Battery | ✅ Working | % indicator + status |
-| Brightness Keys | ✅ Working | Fn+F5/F6 |
-| Sleep / Wake | ✅ Working | SSDT-GPRW fix |
-| USB Ports | ✅ Working | Custom USB map |
-| Thunderbolt (USB-C) | ✅ Working | USB mode |
-| NVMe SSD | ✅ Working | With ASPM fix |
-| CPU Power Management | ✅ Working | CPUFriend tuned |
-| Fan Control | ✅ Working | YogaSMC |
-| Backlight Control | ✅ Working | SSDT-PNLF |
+- ✅ macOS Ventura / Sonoma boot
+- ✅ CPU Power Management (SpeedStep)
+- ✅ Intel UHD 620 Graphics (QE/CI)
+- ✅ USB ports (USB 3.0 / Type-C)
+- ✅ Touchpad & TrackPoint
+- ✅ Keyboard (brightness keys, Fn keys)
+- ✅ Battery percentage & charging
+- ✅ Sleep / Wake
+- ✅ Audio (speaker + headphone jack)
+- ✅ Webcam
+- ✅ Thunderbolt 3
+- ✅ HDMI output
+- ✅ WiFi (Intel — itlwm)
+- ✅ Bluetooth
+- ✅ iCloud / App Store / iMessage (SMBIOS ပြင်ဆင်ပြီးနောက်)
 
 ---
 
-## ❌ What Doesn't Work
+### ❌ အလုပ်မလုပ်သောအရာများ (Not Working)
 
-| Feature | Status | Notes |
-|---------|--------|-------|
-| Bluetooth | ⚠️ Partial | Intel 9560 BT — varies by macOS version |
-| Internal Microphone | ❌ Not Working | Intel SST DSP — no macOS driver exists |
-| FaceTime Camera | ⚠️ Check permissions | USB detected; enable in Privacy & Security |
-| Fingerprint Reader | ❌ Not Working | No macOS driver |
-| Thunderbolt 3 (full) | ❌ Not Working | TB3 hotplug not supported |
-| HDMI Audio | ❌ Not tested | |
+- ❌ Fingerprint reader (macOS တွင် TouchID သို့မချိတ်နိုင်)
+- ❌ IR Camera (Windows Hello — macOS မထောက်ပံ့)
+- ❌ Stylus pen (Wacom — macOS driver မရှိ)
 
 ---
 
-## 🧩 Kexts Used
+### 📁 EFI ဖိုင်တွဲ ဖွဲ့စည်းပုံ
 
-| Kext | Version | Purpose |
-|------|---------|---------|
-| Lilu | 1.7.2 | Patch engine (required) |
-| VirtualSMC | 1.3.7 | SMC emulator |
-| WhateverGreen | 1.7.0 | iGPU patches |
-| AppleALC | 1.9.7 | Audio (ALC285, layout 71) |
-| IntelMausi | 1.0.8 | Ethernet |
-| NVMeFix | 1.1.3 | NVMe power management |
-| CPUFriend | 1.3.0 | CPU power management |
-| CPUFriendDataProvider | Custom | Balance Power profile |
-| ECEnabler | 1.0.6 | Battery EC registers |
-| USBMap | Custom | 12-port USB map |
-| VoodooI2C | 2.9.1 | I2C trackpad + touchscreen |
-| VoodooI2CHID | 1.0 | HID touchscreen |
-| VoodooPS2Controller | 2.3.7 | Keyboard |
-| itlwm | 2.3.0 | Intel WiFi (use with HeliPort) |
-| IntelBluetoothFirmware | 2.4.0 | Intel BT firmware |
-| IntelBTPatcher | 2.4.0 | BT stack patch (Sequoia) |
-| BlueToolFixup | 2.7.2 | BT fix (Monterey+) |
-| BrightnessKeys | Latest | Fn brightness keys |
-| YogaSMC | 1.5.3 | ThinkPad fan + power |
-| SMCBatteryManager | 1.3.7 | Battery status |
-| SMCProcessor | 1.3.7 | CPU temp sensor |
-| SMCLightSensor | 1.3.7 | Ambient light |
-
----
-
-## 📂 ACPI SSDTs
-
-| File | Purpose |
-|------|---------|
-| SSDT-PLUG | CPU power management (XCPM) |
-| SSDT-EC-USBX | Embedded controller + USB power |
-| SSDT-AWAC | System clock fix |
-| SSDT-PMC | NVRAM fix |
-| SSDT-PNLF | Backlight control |
-| SSDT-GPIO | VoodooI2C GPIO interrupt mode |
-| SSDT-XOSI | Windows compatibility (I2C) |
-| SSDT-HPET | IRQ conflict fix |
-| SSDT-GPRW | Sleep instant-wake fix |
-| SSDT-DMIC | Digital mic enable |
-
----
-
-## ⚙️ BIOS Settings
-
-Before installing, configure BIOS (press F1 at startup):
-
-**Disable:**
-- Secure Boot
-- Fast Boot
-- CSM / Legacy Boot
-- Intel SGX
-
-**Enable:**
-- UEFI Boot
-- VT-x (Virtualization)
-- UEFI Network Stack (optional)
-
----
-
-## 🚀 Installation
-
-### 1. Generate your own SMBIOS
-This EFI ships with **placeholder serial numbers**. You **must** generate unique values before use.
-
-Using [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS):
 ```
-SMBIOS type: MacBookPro15,2
+EFI/
+├── BOOT/
+│   └── BOOTx64.efi          # UEFI boot entry
+└── OC/
+    ├── ACPI/                 # DSDT/SSDT patch ဖိုင်များ
+    │   ├── SSDT-PLUG.aml     # CPU power management
+    │   ├── SSDT-EC.aml       # Embedded Controller
+    │   ├── SSDT-AWAC.aml     # RTC clock fix
+    │   └── SSDT-USBX.aml    # USB power
+    ├── Drivers/              # OpenCore driver ဖိုင်များ
+    │   ├── HfsPlus.efi       # HFS+ filesystem
+    │   └── OpenRuntime.efi   # Runtime services
+    ├── Kexts/                # macOS kernel extension (driver) များ
+    │   ├── Lilu.kext         # Base patcher
+    │   ├── WhateverGreen.kext# GPU patch
+    │   ├── AppleALC.kext     # Audio
+    │   ├── VoodooPS2.kext    # Keyboard/Touchpad
+    │   ├── itlwm.kext        # Intel WiFi
+    │   └── IntelBTPatcher.kext # Bluetooth
+    ├── Resources/            # GUI theme ဖိုင်များ
+    ├── Tools/                # OpenCore tools
+    └── config.plist          # OpenCore ပင်မ config ဖိုင်
 ```
 
-Fill these fields in `config.plist` → `PlatformInfo → Generic`:
-- `SystemSerialNumber`
-- `MLB`
-- `SystemUUID`
-- `ROM` (your ethernet MAC address, no colons)
+---
 
-### 2. Set up WiFi
-This EFI uses **itlwm + HeliPort** for WiFi:
-1. Download [HeliPort](https://github.com/OpenIntelWireless/HeliPort/releases)
-2. Add to Login Items for auto-connect on boot
-3. Connect to your network via the HeliPort menu bar icon
+### 🛠 တပ်ဆင်နည်း (Installation Guide)
 
-### 3. After First Boot
-Run these in Terminal for better battery life:
+#### လိုအပ်သောအရာများ
+- USB Drive (16GB နှင့်အထက်)
+- [OpenCore](https://github.com/acidanthera/OpenCorePkg) — Bootloader
+- macOS installer (App Store သို့မဟုတ် IPSW)
+- [ProperTree](https://github.com/corpnewt/ProperTree) — config.plist editor
+- [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) — Serial number generator
+
+#### အဆင့်များ
+
+**① BIOS Settings ပြင်ဆင်ပါ**
+```
+Security → Secure Boot → Disabled
+Config → Thunderbolt → Thunderbolt BIOS Assist → Enabled
+Config → CPU → Hyperthreading → Enabled
+Startup → UEFI/Legacy Boot → UEFI Only
+```
+
+**② USB installer ပြုလုပ်ပါ**
 ```bash
-sudo pmset -a proximitywake 0
-sudo pmset -a tcpkeepalive 0
-sudo pmset -a powernap 0
+# macOS တွင်
+sudo /Applications/Install\ macOS\ Ventura.app/Contents/Resources/createinstallmedia \
+  --volume /Volumes/MyUSB
 ```
 
-Enable camera in **System Settings → Privacy & Security → Camera → FaceTime**.
+**③ EFI partition ထဲသို့ ဤ EFI folder ကူးထည့်ပါ**
+```bash
+# USB ၏ EFI partition mount လုပ်ပါ
+sudo diskutil mount EFI
+# ဤ repo မှ EFI folder ကူးထည့်ပါ
+cp -r EFI/ /Volumes/EFI/
+```
+
+**④ SMBIOS သတ်မှတ်ပါ** *(iCloud / iMessage အသုံးပြုလိုပါက)*
+```
+GenSMBIOS ဖြင့် MacBookPro15,2 SMBIOS generate လုပ်ပြီး
+config.plist → PlatformInfo → Generic တွင် ထည့်သွင်းပါ
+```
+
+**⑤ Boot လုပ်ပါ**
+- USB မှ boot လုပ်၍ macOS Installer ကို ရွေးပါ
+- Disk Utility → APFS format → Install macOS
 
 ---
 
-## 🔧 Key Config Notes
+### ⚙️ OpenCore Config အကြောင်း
 
-| Setting | Value | Reason |
-|---------|-------|--------|
-| SMBIOS | MacBookPro15,2 | Best match for Whiskey Lake |
-| `alcid` | 71 | ALC285 speaker output |
-| `darkwake` | 0 | Prevent sleep battery drain |
-| `proximitywake` | 0 | Prevent Handoff wake events |
-| `hibernatemode` | 0 | Disable hibernation |
-| `-nvmefaspm` | on | Fix NVMe ASPM on Hackintosh |
-| Booter | EnableWriteUnprotector=True | Required for Lenovo firmware |
+`config.plist` သည် OpenCore ၏ အဓိက ပြင်ဆင်မှုဖိုင်ဖြစ်သည်။ ပြင်ဆင်ရာတွင် —
+
+- **ProperTree** သုံး၍ ပြင်ပါ (Text editor ဖြင့် မပြင်ပါနှင့်)
+- `PlatformInfo` section တွင် သင်၏ SMBIOS data ထည့်ရမည်
+- Debug log လိုပါက `Misc → Debug → AppleDebug = true` သတ်မှတ်ပါ
 
 ---
 
-## 📋 Broadcom Bluetooth Dongle (Optional)
+### 🔄 Update လုပ်နည်း
 
-For reliable Bluetooth on Sequoia, an **ASUS USB-BT500** or **ASUS USB-BT400** (BCM20702A0 chip) is recommended.
-
-When dongle arrives:
-1. Enable `BrcmPatchRAM3.kext` and `BrcmFirmwareData.kext` in config.plist
-2. Disable `IntelBluetoothFirmware.kext` and `IntelBTPatcher.kext`
-3. Reboot
+OpenCore version အသစ်ထွက်တိုင်း —
+1. [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases) မှ latest release ဒေါင်းလုပ်ပါ
+2. Kext များကို [Lilu-and-Friends](https://github.com/corpnewt/Lilu-and-Friends) ဖြင့် update လုပ်ပါ
+3. config.plist ကို [OCConfigCompare](https://github.com/corpnewt/OCConfigCompare) ဖြင့် စစ်ဆေးပါ
 
 ---
 
-## 🙏 Credits
+### ❓ အကူအညီ
 
-- [Acidanthera](https://github.com/acidanthera) — OpenCore, Lilu, WhateverGreen, AppleALC, VirtualSMC, CPUFriend
-- [OpenIntelWireless](https://github.com/OpenIntelWireless) — itlwm, IntelBluetoothFirmware
-- [VoodooI2C](https://github.com/VoodooI2C) — Touchscreen & Trackpad
-- [Dortania](https://dortania.github.io/OpenCore-Install-Guide/) — OpenCore Install Guide
-- [YogaSMC](https://github.com/zhen-zen/YogaSMC) — ThinkPad power management
-- [CorpNewt](https://github.com/corpnewt) — GenSMBIOS, ProperTree tools
+ပြဿနာရှိပါက —
+- [Dortania Guide](https://dortania.github.io/OpenCore-Install-Guide/) — အသေးစိတ် တပ်ဆင်လမ်းညွှန်
+- [r/hackintosh](https://reddit.com/r/hackintosh) — Community forum
+- GitHub Issues တွင် report တင်ပါ
 
 ---
 
-## ⚠️ Disclaimer
+## ⚠️ သတိပေးချက်
 
-This EFI is for **educational and personal use only**. macOS is proprietary software by Apple Inc. Use on non-Apple hardware may violate Apple's EULA. The author is not responsible for any damage to your device.
+> ဤ EFI သည် **Lenovo ThinkPad X1 Yoga Gen 4** အတွက်သာ ဖြစ်သည်။  
+> အခြား model များတွင် တိုက်ရိုက် အသုံးပြုခြင်း **မပြုပါနှင့်**။  
+> Config ကို ကိုယ်တိုင် verify မလုပ်မီ Serial Number **မပြောင်းပါနှင့်**။
 
 ---
 
-*Tested on: Lenovo ThinkPad X1 Yoga Gen 4 | macOS Sequoia 15.7.5 | OpenCore*
+## 👨‍💻 ရေးသားသူ
+
+**Dr. ZinMyoTun**  
+GitHub: [@zmyohtun](https://github.com/zmyohtun)
+
+---
+
+## 📄 License
+
+For educational purposes only. macOS is property of Apple Inc.
