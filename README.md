@@ -75,6 +75,8 @@
 - ✅ WiFi — Intel via `itlwm.kext`
 - ✅ Bluetooth
 - ✅ iCloud / App Store / iMessage *(SMBIOS ပြင်ဆင်ပြီးနောက် / after SMBIOS setup)*
+- ✅ Stylus pen (Wacom)
+
 
 ---
 
@@ -88,7 +90,6 @@
 |---|---|---|
 | Fingerprint reader | macOS တွင် TouchID သို့ မချိတ်နိုင် | Cannot link to macOS TouchID |
 | IR Camera | Windows Hello — macOS မထောက်ပံ့ | Windows Hello only, no macOS driver |
-| Stylus pen (Wacom) | macOS Wacom driver မရှိ | No macOS driver available |
 
 ---
 
