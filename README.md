@@ -1,7 +1,7 @@
 # 🍎 Lenovo ThinkPad X1 Yoga Gen 4 — Hackintosh EFI
 
 > **OpenCore bootloader EFI for Lenovo ThinkPad X1 Yoga Gen 4**  
-> macOS Ventura / Sonoma compatible
+> macOS Ventura / Sonoma / Sequoia compatible
 
 ![OpenCore](https://img.shields.io/badge/OpenCore-1.0.x-blue?style=flat-square)
 ![macOS](https://img.shields.io/badge/macOS-Ventura%20%7C%20Sonoma-brightgreen?style=flat-square)
@@ -20,7 +20,8 @@
 
 🌐 **Hackintosh** refers to installing **macOS** on non-Apple hardware — a regular PC or laptop. This repository contains the **EFI partition files** needed to boot macOS on a **Lenovo ThinkPad X1 Yoga Gen 4** using the OpenCore bootloader.
 
----
+ကျွန်တော်ရဲ့ သီးခြားရည်ရွယ်ချက်က ခုခေတ်နည်းပညာပစ္စည်းထဲမှာ Macbook တွေက အနည်းဆုံး သိန်း ၂၀နား နဲ့ အထက်သုံးမှသင့်တင့်တဲ့ အရည်အသွေးကိုသုံးစွဲနိုင်မှာဖြစ်လို့
+ထို Laptop တွေကိုဝယ်ယူရန်ခက်ခဲတဲ့/ ITကိုအတော်အတန်နားလည်စိတ်ဝင်စားသူတွေ/ hackingtoshing ကိုစိတ်ဝင်တစားရှိတဲ့ မည်သည့် ကျောင်းသားမဆို သက်သာသောငွေပမာဏဖြင့် ဝယ်ယူအသုံးပြုနိုင်ရန်အဓိကရည်ရွယ်ပါတယ်။ 
 
 ### ဤ EFI သည် ဘာအတွက်လဲ? / What does this EFI do?
 
